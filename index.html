@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Filte Type</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+  </head>
+  <body>
+
+    <div class="container">
+
+      <h1 class="center-align">Search Names</h1>
+
+      <input type="text" id="inputFilter" placeholder="Search Names...">
+
+      <ul id="names" class="collection with-header">
+        <li class="collection-header"> A</li>
+        <li class="collection-item"> <a href="#">Andrew</a> </li>
+        <li class="collection-item"><a href="#">Anka</a></li>
+        <li class="collection-item"><a href="#">Azul</a></li>
+
+        <li class="collection-header">K</li>
+        <li class="collection-item"><a href="#">Kayla</a></li>
+        <li class="collection-item"><a href="#">Kanno</a></li>
+        <li class="collection-item"><a href="#">Kira</a></li>
+
+        <li class="collection-header">E</li>
+        <li class="collection-item"><a href="#">Eka</a></li>
+        <li class="collection-item"><a href="#">Endo</a></li>
+        <li class="collection-item"><a href="#">Eryka</a></li>
+      </ul>
+
+    </div>
+
+    <script type="text/javascript">
+      // get input  from element && let utk deklarasi var lokal
+      let inputFilter = document.getElementById('inputFilter');
+      //add event listener
+      inputFilter.addEventListener('keyup',filterNames);
+
+
+      function filterNames() {
+        //get value of input
+        let filterValue = this.value.toUpperCase();
+        //get names from ul
+        let ul = document.getElementById('names');
+        //get li-value from li
+        let li = ul.querySelectorAll('li.collection-item');
+        //loop through collection-item li
+        for(let i = 0 ; i < li.length; i++) {
+          let a = li[i].getElementsByTagName('a')[0];
+          //if matched
+          if(a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
+            li[i].style.display = '';
+
+          } else {
+            li[i].style.display = 'none';
+          }
+
+        }
+      }
+
+    </script>
+  </body>
+</html>
